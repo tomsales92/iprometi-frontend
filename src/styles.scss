@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+
+* {
+    background: #000 !important;
+    color: #fff;
+    overflow-y: hidden; // hide vertical
+overflow-x: hidden; // hide horizontal
+}
+
+/* Em styles.css ou styles.scss */
+@font-face {
+    font-family: 'Roboto';
+    src: url('../src/assets/fonts/Roboto-Regular.ttf') format('truetype'),
+         url('../src/assets/fonts/Roboto-Medium.ttf') format('truetype'),
+         url('../src/assets/fonts/Roboto-LightItalic.ttf') format('truetype'),
+         url('../src/assets/fonts/Roboto-ThinItalic.ttf') format('truetype'),
+         url('../src/assets/fonts/Roboto-Light.ttf') format('truetype');
+    /* Adicione todos os formatos de arquivo que você baixou */
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+  

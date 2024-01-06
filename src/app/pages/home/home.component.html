@@ -1,0 +1,53 @@
+<section class="container-fluid my-4">
+    <section class="d-flex justify-content-center date">
+      <p class="data">{{ dataAtual | date:'dd  MMMM yyyy' }}</p>
+    </section>
+  
+      <section class="d-flex justify-content-center number-of-days">
+        <strong class="dias">{{diasRealizados}}/{{meta}}</strong>
+      </section>
+
+      <div style="height: 21rem;">
+        <ngx-charts-pie-chart
+          [customColors]="customColors"
+          [results]="dados"
+          [gradient]="false"
+          [labels]="false"
+          [explodeSlices]="false"
+          [legend]="false"
+          [animations]="true"
+          [doughnut]="true"
+        >
+        </ngx-charts-pie-chart>
+      </div>
+  
+  
+      <div class="d-grid gap-2">
+        <button type="button" class="btn btn-registrar my-4" (click)="open(content)" [disabled]="disableButton">Registrar</button>
+      </div>
+    <footer>
+      <div class="d-flex mb-3">
+          <div class="me-auto p-2">
+              <a routerLink="/">
+                  <svg class="icone" fill="white" width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 9V5L18 12L11 19V14.9C6 14.9 2.5 16.5 0 20C1 15 4 10 11 9M17 8V5L24 12L17 19V16L21 12L17 8Z" /></svg>
+              </a>
+          </div>
+          <div class="p-2">
+              <a routerLink="/">
+                  <svg class="icone" fill="white" width="30" height="30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M7,20H9V14H7V20M11,20H13V12H11V20M15,20H17V16H15V20Z" /></svg>
+              </a>
+          </div>
+        </div>
+    </footer>
+  </section>
+
+  <ng-template #content let-modal>
+    <div class="itens-modal mx-4">
+      <p class="data-modal">{{ dataAtual | date:'dd  MMMM yyyy' }}</p>
+      <span class="text-modal">Deseja realizar a marcação de Hoje?</span>
+      <div class="d-grid gap-2">
+        <button type="button" class="btn btn-success btn-modal" (click)="registraMeta()" >Realizar marcação</button>
+        <button type="button" class="btn btn-outline-danger btn-modal" (click)="modal.close()">Cancelar</button>
+      </div>
+    </div>
+  </ng-template>
