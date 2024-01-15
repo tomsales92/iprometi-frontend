@@ -1,29 +1,30 @@
 <section class="container-fluid my-4">
     <section class="d-flex justify-content-center date">
-      <p class="data">{{ dataAtual | date:'dd  MMMM yyyy' }}</p>
+      <p class="data">{{ currentDate | date:'dd  MMMM yyyy' }}</p>
     </section>
   
       <section class="d-flex justify-content-center number-of-days">
-        <strong class="dias">{{diasRealizados}}/{{meta}}</strong>
+        <strong class="dias">{{accomplished}}/{{goal}}</strong>
       </section>
 
-      <div style="height: 21rem;">
+      <div class="chart" >
         <ngx-charts-pie-chart
           [customColors]="customColors"
-          [results]="dados"
+          [results]="data"
           [gradient]="false"
           [labels]="false"
           [explodeSlices]="false"
           [legend]="false"
           [animations]="true"
           [doughnut]="true"
+          
         >
         </ngx-charts-pie-chart>
       </div>
   
   
       <div class="d-grid gap-2">
-        <button type="button" class="btn btn-registrar my-4" (click)="open(content)" [disabled]="disableButton">Registrar</button>
+        <button type="button" class="btn btn-registrar my-4" (click)="openModal(content)" [disabled]="disableButton">Registrar</button>
       </div>
     <footer>
       <div class="d-flex mb-3">
@@ -43,7 +44,7 @@
 
   <ng-template #content let-modal>
     <div class="itens-modal mx-4">
-      <p class="data-modal">{{ dataAtual | date:'dd  MMMM yyyy' }}</p>
+      <p class="data-modal">{{ currentDate | date:'dd  MMMM yyyy' }}</p>
       <span class="text-modal">Deseja realizar a marcação de Hoje?</span>
       <div class="d-grid gap-2">
         <button type="button" class="btn btn-success btn-modal" (click)="registraMeta()" >Realizar marcação</button>

@@ -1,11 +1,11 @@
 export class Dashboard {
-    meta: number;
-    diasRealizados: number;
-    dados: Dados[];
+    goal: number;
+    accomplished: number;
+    data: Data[];
     colorScheme: ColorScheme[]
   }
   
-  export class Dados {
+  export class Data {
     name: string;
     value: number;
   }
