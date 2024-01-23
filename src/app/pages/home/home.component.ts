@@ -5,6 +5,7 @@ import { GetDataService } from '../../services/getData/get-data.service';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from '../../../environments/environment';
+import { error } from 'console';
 
 
 @Component({
@@ -34,17 +35,35 @@ export class HomeComponent {
     this.getData();
   }
 
-  private getData() {
-    this._getDataService.getDashboard().subscribe((value: Dashboard) => {
-      this.goal = value.goal;
-      this.accomplished = value.accomplished;
-      this.data = value.data;
-      this.customColors = value.colorScheme;
-      this.dataLoad = true;
-      this.verifyDisableButton(); 
+  // private getData() {
+  //   this._getDataService.getDashboard().subscribe((value: Dashboard) => {
+  //     debugger
+  //     this.goal = value.goal;
+  //     this.accomplished = value.accomplished;
+  //     this.data = value.data;
+  //     this.customColors = value.colorScheme;
+  //     this.dataLoad = true;
+  //     this.verifyDisableButton(); 
+  //   });
+  // }
 
-    });
+  private getData() {
+    this._getDataService.getDashboard().subscribe({
+      next: (value: Dashboard) => {
+        this.goal = value.goal;
+        this.accomplished = value.accomplished;
+        this.data = value.data;
+        this.customColors = value.colorScheme;
+        this.dataLoad = true;
+        this.verifyDisableButton(); 
+      },
+      error: (error) => {
+        console.log('Ocorreu um erro: ', error)
+      }
+    })
   }
+
+
 
   registraMeta() {
     this.fecharModal();
