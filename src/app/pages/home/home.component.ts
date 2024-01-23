@@ -67,9 +67,11 @@ export class HomeComponent {
 
   registraMeta() {
     this.fecharModal();
-    this._getDataService.updateData().subscribe(value => {
-      this.dataLoad = false;
-      this.getData();
+    this._getDataService.updateData().subscribe({
+      next:() => {
+        this.dataLoad = false;
+        this.getData();
+      }
     })
 
     this.verifyDisableButton(); 
