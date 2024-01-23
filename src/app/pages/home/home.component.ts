@@ -70,7 +70,7 @@ export class HomeComponent {
     this._getDataService.updateData().subscribe({
       next:() => {
         this.dataLoad = false;
-        this.getData();
+        location.reload();
       }
     })
 
