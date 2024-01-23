@@ -9,7 +9,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class GetDataService {
-  private apiUrl = `${environment.apiUrl}98aa3198-cc84-42de-8875-5871130ad60a`;
+  private apiUrl = `${environment.apiUrl}d7c9231e-7295-4b84-9ec8-8b512e3e154d`;
   constructor(private http: HttpClient) { }
 
   getDashboard(): Observable<Dashboard> {
