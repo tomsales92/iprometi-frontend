@@ -1,4 +1,5 @@
 <section class="container-fluid my-4">
+  @if (dataLoad == true) {
     <section class="d-flex justify-content-center date">
       <p class="data">{{ currentDate | date:'dd  MMMM yyyy' }}</p>
     </section>
@@ -26,6 +27,12 @@
       <div class="d-grid gap-2">
         <button type="button" class="btn btn-registrar my-4" (click)="openModal(content)" [disabled]="disableButton">Registrar</button>
       </div>
+    } @else {
+      <div>
+        <span>Sem valor</span>
+
+      </div>
+    }
     <footer>
       <div class="d-flex mb-3">
           <div class="me-auto p-2">

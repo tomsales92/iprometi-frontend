@@ -24,6 +24,7 @@ export class HomeComponent {
   public goal: number;
   public data: Array<Data>
   public customColors: Array<ColorScheme>
+  public dataLoad: boolean;
   
   constructor(private _getDataService: GetDataService, private modalService: NgbModal) {
     this.currentDate = new Date();
@@ -39,6 +40,7 @@ export class HomeComponent {
       this.accomplished = value.accomplished;
       this.data = value.data;
       this.customColors = value.colorScheme;
+      this.dataLoad = true;
       this.verifyDisableButton(); 
 
     });
@@ -47,6 +49,7 @@ export class HomeComponent {
   registraMeta() {
     this.fecharModal();
     this._getDataService.updateData().subscribe(value => {
+      this.dataLoad = false;
       this.getData();
     })
 
