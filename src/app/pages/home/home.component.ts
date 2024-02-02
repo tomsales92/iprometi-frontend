@@ -48,8 +48,7 @@ export class HomeComponent {
   // }
 
   private getData() {
-    this._getDataService.getDashboard().subscribe({
-      next: (value: Dashboard) => {
+    this._getDataService.getDashboard().subscribe((value: Dashboard) => {
         this.goal = value.goal;
         this.accomplished = value.accomplished;
         this.data = value.data;
@@ -57,10 +56,9 @@ export class HomeComponent {
         this.dataLoad = true;
         this.verifyDisableButton(); 
       },
-      error: (error) => {
+      (error) => {
         console.log('Ocorreu um erro: ', error)
-      }
-    })
+      })
   }
 
 
