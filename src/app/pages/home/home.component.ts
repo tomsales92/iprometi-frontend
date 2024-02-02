@@ -1,4 +1,4 @@
-import { Component, LOCALE_ID } from '@angular/core';
+import { ChangeDetectorRef, Component, LOCALE_ID } from '@angular/core';
 import '@angular/common/locales/global/pt';
 import {  ColorScheme, Dashboard, Data } from '../../models/dashboard/dashboard';
 import { GetDataService } from '../../services/getData/get-data.service';
@@ -27,7 +27,9 @@ export class HomeComponent {
   public customColors: Array<ColorScheme>
   public dataLoad: boolean;
   
-  constructor(private _getDataService: GetDataService, private modalService: NgbModal) {
+  constructor(private _getDataService: GetDataService,
+    private changeDetector: ChangeDetectorRef,
+    private modalService: NgbModal) {
     this.currentDate = new Date();
   }
 
@@ -55,6 +57,7 @@ export class HomeComponent {
         this.customColors = value.colorScheme;
         this.dataLoad = true;
         this.verifyDisableButton(); 
+        this.changeDetector.detectChanges();
       },
       (error) => {
         console.log('Ocorreu um erro: ', error)
